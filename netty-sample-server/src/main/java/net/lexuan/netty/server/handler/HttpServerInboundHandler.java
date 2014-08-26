@@ -20,6 +20,9 @@ public class HttpServerInboundHandler extends ChannelInboundHandlerAdapter {
     @Override  
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {  
         if (msg instanceof HttpRequest) {
+            HttpRequest request = (HttpRequest)msg;
+            
+            
             User u = new User("upton", 18);
             String uStr = JSON.toJSONString(u);
             FullHttpResponse response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(uStr.getBytes()));
